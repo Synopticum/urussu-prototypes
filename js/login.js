@@ -22,11 +22,7 @@ $(document).ready(function () {
     });
 
     $('.send').click(function () {
-        $('.send-notice').fadeIn();
-
-        setTimeout(function () {
-            $('.send-notice').fadeOut();
-        }, 3000);
+        tooltip($('.send-notice'), true);
     });
 
     $('.back').click(function () {

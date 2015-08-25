@@ -2,6 +2,10 @@ $black: #000;
 $white: #fff;
 $blue: #4b7bbb;
 
+@mixin border-radius($radius) {
+  border-radius: $radius;
+}
+
 html {
   margin: 0;
   padding: 0;
@@ -22,8 +26,32 @@ body {
   line-height: 140%;
 }
 
+/* global */
 a {
   color: $blue;
+}
+
+.dev-role {
+  position: fixed;
+  left: 1rem;
+  bottom: 1rem;
+
+  .change-role {
+    cursor: pointer;
+    display: inline-block;
+    padding: .5rem 1rem;
+    background: $white;
+    color: $black;
+    border-radius: .5rem;
+    border: .2rem solid $black;
+    margin-right: .5rem;
+
+    &.active {
+      background: $blue;
+      border-color: $blue;
+      color: $white;
+    }
+  }
 }
 
 .button {
@@ -31,12 +59,13 @@ a {
   display: inline-block;
   vertical-align: top;
   padding: .5rem 2rem;
-  border: .1rem solid $black;
+  border: .2rem solid $black;
   border-radius: 1rem;
   text-transform: uppercase;
   font-weight: bold;
   font-size: 1.4rem;
   line-height: 2.7rem;
+  background: $white;
 
   &:hover {
     background: $blue;
@@ -95,6 +124,7 @@ textarea {
     border: .1rem solid $black;
     border-radius: .5rem;
     margin-bottom: 1rem;
+    background: $white;
 
     .close {
       cursor: pointer;
@@ -102,6 +132,203 @@ textarea {
       right: 1rem;
       top: 1rem;
       font-size: 1.2rem;
+    }
+  }
+}
+
+*[contenteditable="true"] {
+  outline: none;
+  border-radius: .5rem;
+
+  &:hover {
+    color: $blue;
+  }
+
+  &:focus {
+    background: #eeeeee;
+
+    &:hover {
+      color: $black;
+    }
+  }
+}
+
+.popup {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  padding: 4rem;
+  border: .2rem solid $black;
+  border-radius: 1rem;
+  background: #ffffff;
+
+  h1 {
+    margin-top: -1.4rem;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 1px solid $black;
+
+    span {
+      position: relative;
+      top: 1.2rem;
+      display: inline-block;
+      vertical-align: top;
+      padding: 0 1rem;
+      background: $white;
+    }
+  }
+
+  .popup-nav {
+    position: absolute;
+    top: calc(100% + 1rem);
+    left: 0;
+    width: 100%;
+    text-align: right;
+
+    .button {
+      display: inline-block;
+      margin-left: 1rem;
+    }
+  }
+
+  .popup-close {
+    cursor: pointer;
+    position: absolute;
+    top: 2.5rem;
+    right: .5rem;
+    padding: 1rem;
+    font-weight: bold;
+  }
+}
+
+/* map */
+.map {
+  background: url("../images/map.jpg") no-repeat 50% 50%;
+
+  .marker {
+    cursor: pointer;
+    position: absolute;
+    z-index: 111;
+    width: 32px;
+    height: 32px;
+    background: url("data:image/png;base64,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") no-repeat;
+  }
+
+  .overlay {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    background: rgba(255, 255, 255, .3);
+    z-index: 222;
+
+    .popup {
+      width: 75rem;
+
+      .add-marker {
+        overflow: hidden;
+        margin-top: 4rem;
+
+        .leftside {
+          float: left;
+          width: 200px;
+          margin-right: 2rem;
+
+          .add-images {
+            @include border-radius(.3rem);
+            margin: 1rem 0;
+            cursor: pointer;
+            text-align: center;
+            border: .1rem solid $black;
+            padding: 1.3rem 0 1rem 0;
+
+            &:hover {
+              border-color: $blue;
+            }
+          }
+
+          .select-layer {
+            @include border-radius(.3rem);
+            cursor: pointer;
+            padding: .5rem;
+            text-align: center;
+            border: .1rem solid $black;
+
+            &:hover {
+              background: $blue;
+              border-color: $blue;
+              color: $white;
+            }
+          }
+
+          .select-type {
+            font-size: 0;
+            text-align: center;
+
+            .title {
+              font-size: 1.6rem;
+              border-bottom: .1rem solid $black;
+              margin-top: -1rem;
+              margin-bottom: 1.5rem;
+
+              span {
+                position: relative;
+                top: 1rem;
+                padding: 0 .5rem;
+                background: $white;
+              }
+            }
+
+            .item {
+              @include border-radius(.3rem);
+              cursor: pointer;
+              display: inline-block;
+              vertical-align: top;
+              margin: 0 .5rem .5rem 0;
+              width: 32px;
+              height: 32px;
+              box-sizing: border-box;
+              border: .1rem solid $black;
+
+              &:hover {
+                background: $blue;
+                border-color: $blue;
+              }
+            }
+          }
+        }
+
+        .content {
+          overflow: hidden;
+
+          h2 {
+            padding: .5rem;
+            padding-bottom: .3rem;
+            font-size: 2rem;
+          }
+
+          .add-description {
+            margin: 1rem 0;
+            padding: .5rem;
+            padding-bottom: .3rem;
+            font-size: 1.6rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+.user {
+  .add-marker {
+    .select-type {
+      display: none;
     }
   }
 }
@@ -146,27 +373,6 @@ textarea {
 
   .login-popup, .feedback-popup, .info-popup {
     flex: 0 0 60rem;
-    padding: 4rem;
-    border: .2rem solid $black;
-    border-radius: 1rem;
-
-    h1 {
-      margin-top: -1.4rem;
-      text-align: center;
-      text-transform: uppercase;
-      font-size: 18px;
-      font-weight: bold;
-      border-bottom: 1px solid $black;
-
-      span {
-        position: relative;
-        top: 1.2rem;
-        display: inline-block;
-        vertical-align: top;
-        padding: 0 1rem;
-        background: $white;
-      }
-    }
   }
 
   .login-popup {
