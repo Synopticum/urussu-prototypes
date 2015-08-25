@@ -1,12 +1,25 @@
 $(document).ready(function () {
     $('.map').on('dblclick', function (e) {
         if (window.role === 'admin' || window.role === 'user') {
-            var item = $('<div class="marker"></div>').css({
-                left: 'calc(' + e.clientX + 'px - 16px)',
-                top: 'calc(' + e.clientY + 'px - 16px)'
-            });
+            var content = '<div class="marker">' +
+                            '<div class="marker-content">' +
+                                '<div class="marker-image"></div>' +
+                                '<div class="marker-text"><h6>It\'s my marker</h6>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque maiores, possimus. Enim, possimus, recusandae. Maiores.</div>' +
+                                '<div class="marker-controls">' +
+                                    '<span class="icon icon-close"></span><br>' +
+                                    '<span class="icon icon-edit"></span><br>' +
+                                    '<span class="icon icon-remove"><div class="confirm"><div class="yes">Удалить</div>&nbsp;&nbsp;/&nbsp;&nbsp;<div class="no">Не удалять</div></div></span><br>' +
+                                '</div>' +
+                            '</div>' +
+                          '</div>',
+                item = $(content).css({
+                    left: 'calc(' + e.clientX + 'px - 16px)',
+                    top: 'calc(' + e.clientY + 'px - 16px)'
+                });
 
-            $('.overlay').show();
+            $('.overlay').show().find('h1').find('span').text('Добавить точку');
+            $('.overlay').find('.cancel').text('Отменить добавление');
+            $('.overlay').find('.submit').text('Добавить');
 
             $('.popup-close, .cancel', this).click(function () {
                 $('.overlay').hide();
@@ -16,6 +29,34 @@ $(document).ready(function () {
             $('.submit').click(function () {
                 $('.overlay').hide();
                 $('.map').append(item);
+
+                $(item).click(function () {
+                    $(this).find('.marker-content').show();
+                });
+
+                $('.icon-edit', item).click(function () {
+                    $('.overlay').show().find('h1').find('span').text('Изменить точку');
+                    $('.overlay').find('.cancel').text('Отменить изменения');
+                    $('.overlay').find('.submit').text('Изменить');
+                });
+
+                $('.icon-remove', item).click(function () {
+                    $('.confirm', this).show();
+
+                    $('.yes', this).click(function () {
+                        $(this).closest('.marker').hide();
+                    });
+
+                    $('.no', this).click(function (e) {
+                        e.stopPropagation();
+                        $(this).closest('.confirm').hide();
+                    });
+                });
+
+                $('.icon-close', item).click(function (e) {
+                    e.stopPropagation();
+                    $(this).closest('.marker-content').hide();
+                });
 
                 tooltip($('.dot-add'), true);
             });
