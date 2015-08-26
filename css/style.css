@@ -42,35 +42,56 @@ a {
 .admin-menu {
   display: none;
   position: absolute;
-  width: 20rem; }
+  white-space: nowrap; }
   .admin-menu li {
     position: relative; }
-  .admin-menu .button {
-    font-size: 1.4rem;
-    padding: .3rem 2rem .2rem 2rem;
-    border-radius: .5rem; }
+    .admin-menu li .button {
+      display: block;
+      font-size: 1.4rem;
+      padding: .3rem 2rem .2rem 2rem;
+      border-radius: 0; }
+    .admin-menu li:first-child .button {
+      border-bottom: 0;
+      border-radius: .5rem .5rem 0 0; }
+    .admin-menu li:last-child .button {
+      border-top: 0;
+      border-radius: 0 0 .5rem .5rem; }
   .admin-menu .create-layer-form {
     display: none;
     position: absolute;
     left: 100%;
-    top: 50%;
-    transform: translateY(-50%);
-    margin-left: 2.4rem;
-    white-space: nowrap; }
+    top: -.9rem;
+    margin-left: 3.2rem;
+    white-space: nowrap;
+    vertical-align: top; }
     .admin-menu .create-layer-form::before {
       content: '';
       position: absolute;
       left: -2.9rem;
-      top: 0.5rem;
+      top: 1.5rem;
       display: block;
       width: 2.4rem;
       height: 2.4rem;
       background: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDk2IDk2IiBoZWlnaHQ9Ijk2cHgiIGlkPSJhcnJvd19yaWdodCIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgOTYgOTYiIHdpZHRoPSI5NnB4IiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48cGF0aCBkPSJNMTIsNTJoNjIuMzQ0TDUyLjg4OCw3My40NTZjLTEuNTYyLDEuNTYyLTEuNTYyLDQuMDk1LTAuMDAxLDUuNjU2YzEuNTYyLDEuNTYyLDQuMDk2LDEuNTYyLDUuNjU4LDBsMjguMjgzLTI4LjI4NGwwLDAgIGMwLjE4Ni0wLjE4NiwwLjM1Mi0wLjM5MSwwLjQ5OC0wLjYwOWMwLjA2Ny0wLjEwMSwwLjExNC0wLjIxLDAuMTcyLTAuMzE1YzAuMDY2LTAuMTI0LDAuMTQyLTAuMjQyLDAuMTk1LTAuMzczICBjMC4wNTctMC4xMzUsMC4wODktMC4yNzUsMC4xMjktMC40MTVjMC4wMzMtMC4xMTEsMC4wNzYtMC4yMTcsMC4wOTktMC4zMzFDODcuOTczLDQ4LjUyNSw4OCw0OC4yNjMsODgsNDhsMCwwICBjMC0wLjAwMy0wLjAwMS0wLjAwNi0wLjAwMS0wLjAwOWMtMC4wMDEtMC4yNTktMC4wMjctMC41MTktMC4wNzgtMC43NzRjLTAuMDI0LTAuMTItMC4wNjktMC4yMzEtMC4xMDQtMC4zNDkgIGMtMC4wMzktMC4xMzMtMC4wNjktMC4yNjgtMC4xMjMtMC4zOTdjLTAuMDU4LTAuMTM5LTAuMTM2LTAuMjY1LTAuMjA4LTAuMzk2Yy0wLjA1NC0wLjA5OC0wLjA5Ny0wLjE5OC0wLjE1OS0wLjI5MiAgYy0wLjE0Ni0wLjIyMS0wLjMxNC0wLjQyNy0wLjUwMS0wLjYxNEw1OC41NDQsMTYuODg4Yy0xLjU2Mi0xLjU2Mi00LjA5NS0xLjU2Mi01LjY1Ny0wLjAwMWMtMS41NjIsMS41NjItMS41NjIsNC4wOTUsMCw1LjY1OCAgTDc0LjM0Myw0NEwxMiw0NGMtMi4yMDksMC00LDEuNzkxLTQsNEM4LDUwLjIwOSw5Ljc5MSw1MiwxMiw1MnoiLz48L3N2Zz4=") no-repeat 0 0;
       background-size: 2.4rem 2.4rem; }
-    .admin-menu .create-layer-form .icon-submit {
+    .admin-menu .create-layer-form .icon {
       position: relative;
-      top: 4px;
+      background-color: #fff;
+      padding: .5rem;
+      border: 0.2rem solid #000;
+      border-radius: .5rem; }
+      .admin-menu .create-layer-form .icon:hover {
+        border-color: #4b7bbb; }
+    .admin-menu .create-layer-form .icon-submit {
+      display: none;
+      top: 10px;
       left: 3px; }
+    .admin-menu .create-layer-form .icon-remove {
+      top: 10px;
+      left: 3px;
+      background-position: calc(100% - .5rem) calc(100% - .5rem); }
+      .admin-menu .create-layer-form .icon-remove .confirm {
+        display: none; }
 
 .dev-role {
   position: fixed;
@@ -140,9 +161,26 @@ textarea {
   padding: .5rem 1rem;
   background: #fff;
   font-family: 'PT Sans', sans-serif;
-  font-size: 1.6rem; }
+  font-size: 1.6rem;
+  margin: 0; }
   .textbox:focus {
     border-color: #4b7bbb; }
+
+.confirm {
+  display: none;
+  position: absolute;
+  top: calc(100% + .5rem);
+  left: -7rem;
+  background: #fff;
+  padding: .5rem 1rem;
+  white-space: nowrap;
+  border: 0.2rem solid #000;
+  border-radius: .5rem; }
+  .confirm div {
+    display: inline;
+    color: #000; }
+    .confirm div:hover {
+      color: #4b7bbb; }
 
 .tray {
   position: fixed;
@@ -268,22 +306,6 @@ textarea {
             color: #4b7bbb; }
           .map .marker .marker-content .marker-controls span.icon-remove {
             position: relative; }
-            .map .marker .marker-content .marker-controls span.icon-remove .confirm {
-              display: none;
-              position: absolute;
-              top: -1.3rem;
-              left: calc(100% + 1rem);
-              background: #fff;
-              padding: 1rem 1.5rem 1rem 1rem;
-              white-space: nowrap;
-              border: 0.2rem solid #000;
-              border-left: 0;
-              border-radius: 0 .5rem .5rem 0; }
-              .map .marker .marker-content .marker-controls span.icon-remove .confirm div {
-                display: inline;
-                color: #000; }
-                .map .marker .marker-content .marker-controls span.icon-remove .confirm div:hover {
-                  color: #4b7bbb; }
   .map .overlay {
     display: none;
     position: fixed;
