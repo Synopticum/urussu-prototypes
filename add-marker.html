@@ -62,6 +62,11 @@
         Чтобы добавлять маркеры на карту необходимо <a href="">представиться</a>.
         <div class="close">X</div>
     </div>
+
+    <div class="notice layer-added">
+        Новый слой был создан.
+        <div class="close">X</div>
+    </div>
 </div>
 
 <div class="dev-role">
@@ -70,8 +75,21 @@
     <span class="change-role" id="anonymous">anonymous</span>
 </div>
 
+<div class="admin-menu">
+    <ul>
+        <li>
+            <span class="button create-layer">Создать новый слой</span>
+            <div class="create-layer-form">
+                <input type="text" class="textbox" />
+                <span class="icon icon-submit"></span>
+            </div>
+        </li>
+    </ul>
+</div>
+
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="js/global.js"></script>
 <script src="js/addMarker.js"></script>
+<script src="js/createLayer.js"></script>
 </body>
 </html>

@@ -12,6 +12,21 @@ $(document).ready(function () {
         $('body')[0].className = '';
         $('body').addClass('map ' + role);
     });
+
+    $('.map').click(function () {
+        $('.admin-menu').hide();
+    });
+
+    $('.map').on('contextmenu', function (e) {
+        if (window.role === 'admin') {
+            e.preventDefault();
+
+            $('.admin-menu').show().css({
+                left: e.pageX,
+                top: e.pageY
+            });
+        }
+    });
 });
 
 function tooltip ($el, hide) {
