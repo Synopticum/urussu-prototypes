@@ -29,6 +29,23 @@ $(document).ready(function () {
             $('.admin-menu').find('.button').siblings().hide();
         }
     });
+
+    $(document).on('keyup', function (e) {
+        if (e.keyCode === 13) {
+            $('.launchpad').show();
+            $('.enter').hide();
+        }
+
+        if (e.keyCode === 27) {
+            $('.launchpad').hide();
+        }
+    });
+
+    $('.enter').click(function (e) {
+        if (e.keyCode === 13) {
+            $('.launchpad').show();
+        }
+    });
 });
 
 function tooltip ($el, hide) {
