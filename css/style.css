@@ -20,6 +20,10 @@ body {
 a {
   color: #4b7bbb; }
 
+mark {
+  color: #4b7bbb;
+  background: #fff; }
+
 .icon {
   cursor: pointer;
   display: inline-block;
@@ -224,7 +228,9 @@ textarea {
   padding: 4rem;
   border: 0.2rem solid #000;
   border-radius: 1rem;
-  background: #ffffff; }
+  background: #ffffff;
+  box-sizing: border-box;
+  max-height: 90vh; }
   .popup h1 {
     margin-top: -1.4rem;
     text-align: center;
@@ -273,7 +279,7 @@ textarea {
       bottom: 100%;
       background: #fff;
       border: 0.2em solid #000;
-      padding: 2rem 4rem 2rem 2rem;
+      padding: 2rem 4rem 1rem 2rem;
       width: 50rem;
       border-radius: .5rem;
       box-sizing: border-box; }
@@ -295,6 +301,12 @@ textarea {
           border-color: #4b7bbb; }
       .map .marker .marker-content .marker-text {
         overflow: hidden; }
+        .map .marker .marker-content .marker-text .link-to-comments {
+          cursor: pointer;
+          color: #4b7bbb;
+          text-decoration: underline;
+          float: right;
+          margin-top: .5rem; }
       .map .marker .marker-content .marker-controls {
         position: absolute;
         top: 1rem;
@@ -306,7 +318,7 @@ textarea {
             color: #4b7bbb; }
           .map .marker .marker-content .marker-controls span.icon-remove {
             position: relative; }
-  .map .overlay {
+  .map .overlay, .map .overlay2 {
     display: none;
     position: fixed;
     left: 0;
@@ -316,48 +328,48 @@ textarea {
     min-height: 100%;
     background: rgba(255, 255, 255, 0.3);
     z-index: 222; }
-    .map .overlay .popup {
+    .map .overlay .popup, .map .overlay2 .popup {
       width: 75rem; }
-      .map .overlay .popup .add-marker {
+      .map .overlay .popup .add-marker, .map .overlay2 .popup .add-marker {
         overflow: hidden;
         margin-top: 4rem; }
-        .map .overlay .popup .add-marker .leftside {
+        .map .overlay .popup .add-marker .leftside, .map .overlay2 .popup .add-marker .leftside {
           float: left;
           width: 200px;
           margin-right: 2rem; }
-          .map .overlay .popup .add-marker .leftside .add-images {
+          .map .overlay .popup .add-marker .leftside .add-images, .map .overlay2 .popup .add-marker .leftside .add-images {
             border-radius: 0.3rem;
             margin: 1rem 0;
             cursor: pointer;
             text-align: center;
             border: 0.1rem solid #000;
             padding: 1.3rem 0 1rem 0; }
-            .map .overlay .popup .add-marker .leftside .add-images:hover {
+            .map .overlay .popup .add-marker .leftside .add-images:hover, .map .overlay2 .popup .add-marker .leftside .add-images:hover {
               border-color: #4b7bbb; }
-          .map .overlay .popup .add-marker .leftside .select-layer {
+          .map .overlay .popup .add-marker .leftside .select-layer, .map .overlay2 .popup .add-marker .leftside .select-layer {
             border-radius: 0.3rem;
             cursor: pointer;
             padding: .5rem;
             text-align: center;
             border: 0.1rem solid #000; }
-            .map .overlay .popup .add-marker .leftside .select-layer:hover {
+            .map .overlay .popup .add-marker .leftside .select-layer:hover, .map .overlay2 .popup .add-marker .leftside .select-layer:hover {
               background: #4b7bbb;
               border-color: #4b7bbb;
               color: #fff; }
-          .map .overlay .popup .add-marker .leftside .select-type {
+          .map .overlay .popup .add-marker .leftside .select-type, .map .overlay2 .popup .add-marker .leftside .select-type {
             font-size: 0;
             text-align: center; }
-            .map .overlay .popup .add-marker .leftside .select-type .title {
+            .map .overlay .popup .add-marker .leftside .select-type .title, .map .overlay2 .popup .add-marker .leftside .select-type .title {
               font-size: 1.6rem;
               border-bottom: 0.1rem solid #000;
               margin-top: -1rem;
               margin-bottom: 1.5rem; }
-              .map .overlay .popup .add-marker .leftside .select-type .title span {
+              .map .overlay .popup .add-marker .leftside .select-type .title span, .map .overlay2 .popup .add-marker .leftside .select-type .title span {
                 position: relative;
                 top: 1rem;
                 padding: 0 .5rem;
                 background: #fff; }
-            .map .overlay .popup .add-marker .leftside .select-type .item {
+            .map .overlay .popup .add-marker .leftside .select-type .item, .map .overlay2 .popup .add-marker .leftside .select-type .item {
               border-radius: 0.3rem;
               cursor: pointer;
               display: inline-block;
@@ -367,16 +379,16 @@ textarea {
               height: 32px;
               box-sizing: border-box;
               border: 0.1rem solid #000; }
-              .map .overlay .popup .add-marker .leftside .select-type .item:hover {
+              .map .overlay .popup .add-marker .leftside .select-type .item:hover, .map .overlay2 .popup .add-marker .leftside .select-type .item:hover {
                 background: #4b7bbb;
                 border-color: #4b7bbb; }
-        .map .overlay .popup .add-marker .content {
+        .map .overlay .popup .add-marker .content, .map .overlay2 .popup .add-marker .content {
           overflow: hidden; }
-          .map .overlay .popup .add-marker .content h2 {
+          .map .overlay .popup .add-marker .content h2, .map .overlay2 .popup .add-marker .content h2 {
             padding: .5rem;
             padding-bottom: .3rem;
             font-size: 2rem; }
-          .map .overlay .popup .add-marker .content .add-description {
+          .map .overlay .popup .add-marker .content .add-description, .map .overlay2 .popup .add-marker .content .add-description {
             margin: 1rem 0;
             padding: .5rem;
             padding-bottom: .3rem;
@@ -387,6 +399,66 @@ textarea {
 
 .anonymous .marker .icon-edit, .anonymous .marker .icon-remove {
   display: none; }
+
+.comments {
+  margin: 2rem 0;
+  max-height: 50vh;
+  overflow-y: auto;
+  border-bottom: 0.1rem solid #ccc; }
+  .comments .comment {
+    overflow: hidden;
+    padding: 2rem 0;
+    border-bottom: 0.1rem solid #ccc; }
+    .comments .comment:last-of-type {
+      border-bottom: 0; }
+    .comments .comment aside {
+      float: left;
+      width: 20rem; }
+      .comments .comment aside .avatar {
+        width: 8rem;
+        height: 8rem;
+        border: 0.1rem solid #000;
+        border-radius: .5rem;
+        margin-bottom: .2rem;
+        background: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDUxMiA1MTIiIGhlaWdodD0iNTEycHgiIGlkPSJMYXllcl8xIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiB3aWR0aD0iNTEycHgiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxnPjxwYXRoIGQ9Ik00NjYuNDg4LDEyNS40MTRoLTgyLjg2NmwtNDguMTc0LTQ4LjI5MWMtMC4wNTgtMC4wNTgtMC4xMDctMC4wOTctMC4xNTYtMC4xNTZsLTAuMDg4LTAuMDc4bDAsMCAgIGMtNy4yMzktNy4xNjEtMTcuMTc5LTExLjU4NC0yOC4xNjYtMTEuNTg0SDIwNi44NTNjLTExLjY0MiwwLTIyLjAyMiw1LjAyOS0yOS4zNTEsMTIuOTU0bC0wLjAzOS0wLjExN2wtNDcuMTc2LDQ3LjI3M0g0NS43MTkgICBjLTIyLjEzLDAtNDAuMDczLDE3Ljk0NC00MC4wNzMsNDAuMDczdjI0MC40MzljMCwyMi4xMywxNy45NDMsNDAuMDczLDQwLjA3Myw0MC4wNzNoNDIwLjc2OWMyMi4xNCwwLDQwLjA4My0xNy45NDMsNDAuMDgzLTQwLjA3MyAgIFYxNjUuNDg4QzUwNi41NzEsMTQzLjM1OCw0ODguNjI4LDEyNS40MTQsNDY2LjQ4OCwxMjUuNDE0eiBNNDg2LjUzNCw0MDUuOTI3YzAsMTEuMDM2LTkuMDAxLDIwLjAzNy0yMC4wNDcsMjAuMDM3SDQ1LjcxOSAgIGMtMTEuMDQ1LDAtMjAuMDM3LTktMjAuMDM3LTIwLjAzN1YxNjUuNDg4YzAtMTEuMDU1LDguOTkxLTIwLjAzNywyMC4wMzctMjAuMDM3aDg0LjU2OGg4LjMwNmw1Ljg4LTUuODg5bDI0LjI1My0yNC4zMDJsMC40OSwxLjQ2OCAgIGwyMy4wMDEtMjQuODdjMy44OTMtNC4yMDcsOS4wODktNi41MTYsMTQuNjM2LTYuNTE2aDEwMC4xODNjNS4yOTMsMCwxMC4zMDIsMi4wNTUsMTQuMjI1LDUuOTI5bDQ4LjE3NCw0OC4yOTJsNS44Nyw1Ljg4OWg4LjMxNiAgIGg4Mi44NjZjMTEuMDQ1LDAsMjAuMDQ3LDguOTgxLDIwLjA0NywyMC4wMzdWNDA1LjkyN3oiIGZpbGw9IiMzNzQwNEQiLz48cGF0aCBkPSJNMjU2LjEwMywxNDUuNDUxYy03MS45MjgsMC0xMzAuMjM4LDU4LjI5LTEzMC4yMzgsMTMwLjIxOXM1OC4zMSwxMzAuMjU3LDEzMC4yMzgsMTMwLjI1NyAgIHMxMzAuMjM4LTU4LjMyOSwxMzAuMjM4LTEzMC4yNTdTMzI4LjAzMiwxNDUuNDUxLDI1Ni4xMDMsMTQ1LjQ1MXogTTI1Ni4xMDMsMzg1Ljg5Yy02MC43NjUsMC0xMTAuMjAxLTQ5LjQ0NS0xMTAuMjAxLTExMC4yMiAgIGMwLTYwLjc1Niw0OS40MzYtMTEwLjE4MiwxMTAuMjAxLTExMC4xODJzMTEwLjIwMSw0OS40MjYsMTEwLjIwMSwxMTAuMTgyQzM2Ni4zMDUsMzM2LjQ0NSwzMTYuODY4LDM4NS44OSwyNTYuMTAzLDM4NS44OXoiIGZpbGw9IiMzNzQwNEQiLz48cGF0aCBkPSJNMjU2LjEwMywxODUuNTI0Yy00OS44MDgsMC05MC4xNjUsNDAuMzQ4LTkwLjE2NSw5MC4xNDZzNDAuMzU3LDkwLjE4NCw5MC4xNjUsOTAuMTg0ICAgczkwLjE2NS00MC4zODYsOTAuMTY1LTkwLjE4NFMzMDUuOTExLDE4NS41MjQsMjU2LjEwMywxODUuNTI0eiBNMjU2LjEwMywzNDUuODE3Yy0zOC42NjUsMC03MC4xMjgtMzEuNDgyLTcwLjEyOC03MC4xNDcgICBzMzEuNDYzLTcwLjEwOSw3MC4xMjgtNzAuMTA5czcwLjEyOCwzMS40NDQsNzAuMTI4LDcwLjEwOVMyOTQuNzY4LDM0NS44MTcsMjU2LjEwMywzNDUuODE3eiIgZmlsbD0iIzM3NDA0RCIvPjwvZz48L3N2Zz4=") no-repeat 50% 50%;
+        background-size: 40px 40px; }
+    .comments .comment .content {
+      overflow: hidden; }
+
+.add-comment {
+  overflow: hidden;
+  margin-bottom: 1rem; }
+  .add-comment .controls {
+    box-sizing: border-box;
+    float: right;
+    width: 15rem; }
+    .add-comment .controls .button {
+      display: block;
+      margin-bottom: .2rem; }
+    .add-comment .controls .send {
+      text-align: center; }
+  .add-comment textarea {
+    width: calc(100% - 16rem);
+    border-width: .2rem;
+    height: 10rem; }
+
+.add-attachment {
+  padding-left: 3rem;
+  background: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDUxMiA1MTIiIGhlaWdodD0iNTEycHgiIGlkPSJMYXllcl8xIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiB3aWR0aD0iNTEycHgiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxnPjxwYXRoIGQ9Ik00NjYuNDg4LDEyNS40MTRoLTgyLjg2NmwtNDguMTc0LTQ4LjI5MWMtMC4wNTgtMC4wNTgtMC4xMDctMC4wOTctMC4xNTYtMC4xNTZsLTAuMDg4LTAuMDc4bDAsMCAgIGMtNy4yMzktNy4xNjEtMTcuMTc5LTExLjU4NC0yOC4xNjYtMTEuNTg0SDIwNi44NTNjLTExLjY0MiwwLTIyLjAyMiw1LjAyOS0yOS4zNTEsMTIuOTU0bC0wLjAzOS0wLjExN2wtNDcuMTc2LDQ3LjI3M0g0NS43MTkgICBjLTIyLjEzLDAtNDAuMDczLDE3Ljk0NC00MC4wNzMsNDAuMDczdjI0MC40MzljMCwyMi4xMywxNy45NDMsNDAuMDczLDQwLjA3Myw0MC4wNzNoNDIwLjc2OWMyMi4xNCwwLDQwLjA4My0xNy45NDMsNDAuMDgzLTQwLjA3MyAgIFYxNjUuNDg4QzUwNi41NzEsMTQzLjM1OCw0ODguNjI4LDEyNS40MTQsNDY2LjQ4OCwxMjUuNDE0eiBNNDg2LjUzNCw0MDUuOTI3YzAsMTEuMDM2LTkuMDAxLDIwLjAzNy0yMC4wNDcsMjAuMDM3SDQ1LjcxOSAgIGMtMTEuMDQ1LDAtMjAuMDM3LTktMjAuMDM3LTIwLjAzN1YxNjUuNDg4YzAtMTEuMDU1LDguOTkxLTIwLjAzNywyMC4wMzctMjAuMDM3aDg0LjU2OGg4LjMwNmw1Ljg4LTUuODg5bDI0LjI1My0yNC4zMDJsMC40OSwxLjQ2OCAgIGwyMy4wMDEtMjQuODdjMy44OTMtNC4yMDcsOS4wODktNi41MTYsMTQuNjM2LTYuNTE2aDEwMC4xODNjNS4yOTMsMCwxMC4zMDIsMi4wNTUsMTQuMjI1LDUuOTI5bDQ4LjE3NCw0OC4yOTJsNS44Nyw1Ljg4OWg4LjMxNiAgIGg4Mi44NjZjMTEuMDQ1LDAsMjAuMDQ3LDguOTgxLDIwLjA0NywyMC4wMzdWNDA1LjkyN3oiIGZpbGw9IiMzNzQwNEQiLz48cGF0aCBkPSJNMjU2LjEwMywxNDUuNDUxYy03MS45MjgsMC0xMzAuMjM4LDU4LjI5LTEzMC4yMzgsMTMwLjIxOXM1OC4zMSwxMzAuMjU3LDEzMC4yMzgsMTMwLjI1NyAgIHMxMzAuMjM4LTU4LjMyOSwxMzAuMjM4LTEzMC4yNTdTMzI4LjAzMiwxNDUuNDUxLDI1Ni4xMDMsMTQ1LjQ1MXogTTI1Ni4xMDMsMzg1Ljg5Yy02MC43NjUsMC0xMTAuMjAxLTQ5LjQ0NS0xMTAuMjAxLTExMC4yMiAgIGMwLTYwLjc1Niw0OS40MzYtMTEwLjE4MiwxMTAuMjAxLTExMC4xODJzMTEwLjIwMSw0OS40MjYsMTEwLjIwMSwxMTAuMTgyQzM2Ni4zMDUsMzM2LjQ0NSwzMTYuODY4LDM4NS44OSwyNTYuMTAzLDM4NS44OXoiIGZpbGw9IiMzNzQwNEQiLz48cGF0aCBkPSJNMjU2LjEwMywxODUuNTI0Yy00OS44MDgsMC05MC4xNjUsNDAuMzQ4LTkwLjE2NSw5MC4xNDZzNDAuMzU3LDkwLjE4NCw5MC4xNjUsOTAuMTg0ICAgczkwLjE2NS00MC4zODYsOTAuMTY1LTkwLjE4NFMzMDUuOTExLDE4NS41MjQsMjU2LjEwMywxODUuNTI0eiBNMjU2LjEwMywzNDUuODE3Yy0zOC42NjUsMC03MC4xMjgtMzEuNDgyLTcwLjEyOC03MC4xNDcgICBzMzEuNDYzLTcwLjEwOSw3MC4xMjgtNzAuMTA5czcwLjEyOCwzMS40NDQsNzAuMTI4LDcwLjEwOVMyOTQuNzY4LDM0NS44MTcsMjU2LjEwMywzNDUuODE3eiIgZmlsbD0iIzM3NDA0RCIvPjwvZz48L3N2Zz4=") no-repeat 0 50%;
+  background-size: 2.4rem 2.4rem; }
+
+input[type="file"] {
+  font-family: 'PT Sans', sans-serif;
+  font-size: 1.6rem; }
+
+.comments-restricted {
+  display: none;
+  text-align: center; }
+
+.anonymous .add-comment, .anonymous .add-attachment {
+  display: none; }
+.anonymous .comments-restricted {
+  display: block; }
 
 /* login */
 .login {

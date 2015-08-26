@@ -4,7 +4,7 @@ $(document).ready(function () {
             var content = '<div class="marker">' +
                             '<div class="marker-content">' +
                                 '<div class="marker-image"></div>' +
-                                '<div class="marker-text"><h6>It\'s my marker</h6>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque maiores, possimus. Enim, possimus, recusandae. Maiores.</div>' +
+                                '<div class="marker-text"><h6>Уруссинская ГРЭС</h6>Государственная районная электростанция. Построена и работает с 1947 года.<br><span class="link-to-comments">Читать комментарии</span></div>' +
                                 '<div class="marker-controls">' +
                                     '<span class="icon icon-close"></span><br>' +
                                     '<span class="icon icon-edit"></span><br>' +
@@ -58,7 +58,17 @@ $(document).ready(function () {
                     $(this).closest('.marker-content').hide();
                 });
 
+                $('.link-to-comments', item).click(function (e) {
+                    e.stopPropagation();
+                    $('.overlay2').show();
+                });
+
                 tooltip($('.dot-add'), true);
+            });
+
+            $('.send').click(function () {
+                $('.overlay2').hide();
+                tooltip($('.comment-added'), true);
             });
         } else if (window.role === 'anonymous') {
             tooltip($('.auth-error'), true);
