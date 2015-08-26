@@ -25,6 +25,8 @@ $(document).ready(function () {
                 left: e.pageX,
                 top: e.pageY
             });
+
+            $('.admin-menu').find('.button').siblings().hide();
         }
     });
 });
