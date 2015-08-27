@@ -414,13 +414,17 @@ textarea {
   .launchpad .popup nav {
     background: #eeeeee;
     padding: 1rem;
-    border-radius: 1rem 1rem 0 0; }
+    border-radius: 1rem 1rem 0 0;
+    overflow: hidden; }
     .launchpad .popup nav .button {
+      float: left;
       margin-right: .2rem; }
       .launchpad .popup nav .button.active {
         background: #4b7bbb;
         border-color: #4b7bbb;
         color: #fff; }
+    .launchpad .popup nav .launch-anonymous {
+      float: right; }
   .launchpad .popup .content {
     padding: 0 2rem 2rem 2rem; }
 .launchpad .news, .launchpad .ads, .launchpad .initiatives {

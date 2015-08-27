@@ -30,4 +30,12 @@ $(document).ready(function () {
         $('.launchpad').find('.content > .category').hide();
         $('.launchpad').find('.claims').show();
     });
+
+    $('.launch-anonymous').click(function () {
+        $('.launchpad').find('nav > .button').removeClass('active');
+        $(this).addClass('active');
+
+        $('.launchpad').find('.content > .category').hide();
+        $('.launchpad').find('.anonymous').show();
+    });
 });
