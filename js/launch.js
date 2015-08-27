@@ -38,4 +38,12 @@ $(document).ready(function () {
         $('.launchpad').find('.content > .category').hide();
         $('.launchpad').find('.anonymous').show();
     });
+
+    $('.launch-transport').click(function () {
+        $('.launchpad').find('nav > .button').removeClass('active');
+        $(this).addClass('active');
+
+        $('.launchpad').find('.content > .category').hide();
+        $('.launchpad').find('.transport').show();
+    });
 });
